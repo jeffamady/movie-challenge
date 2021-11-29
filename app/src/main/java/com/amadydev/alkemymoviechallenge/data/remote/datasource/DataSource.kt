@@ -9,18 +9,10 @@ import kotlinx.coroutines.withContext
 
 class DataSource(private val dataSource: IDataSource) {
     suspend fun getPopularMovies(): ObjectResult<MoviesDTO?> {
-        return withContext(Dispatchers.IO) {
-            try {
-
-                ObjectResult.Success(response.body())
-            } catch (ex: Exception){
-                ObjectResult.Failure(ex)
-            }
-        }
         return try {
             withContext(Dispatchers.IO){
-                val response = dataSource.fetchPopularMovies(DB.api_key)
-                ObjectResult.Success(response.body())
+                val result = dataSource.fetchPopularMovies(DB.api_key)
+                ObjectResult.Success(result.body())
             }
         } catch (ex: Exception){
             ObjectResult.Failure(ex)
@@ -28,11 +20,13 @@ class DataSource(private val dataSource: IDataSource) {
     }
 
     suspend fun getMovieByName(query: String): ObjectResult<MoviesDTO?> {
-        return withContext(Dispatchers.IO) {
-            when (val response = dataSource.fetchMovieByName(DB.api_key,query)) {
-                is ObjectResult.Success -> ObjectResult.Success(response.data.body())
-                is ObjectResult.Failure -> ObjectResult.Failure(response.exception)
+        return try {
+            withContext(Dispatchers.IO){
+                val result = dataSource.fetchMovieByName(DB.api_key,query)
+                ObjectResult.Success(result.body())
             }
+        } catch (ex: Exception) {
+            ObjectResult.Failure(ex)
         }
     }
 
