@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AlkemyMovieChallenge</string>
+    <string name="movie">a movie</string>
 </resources>
