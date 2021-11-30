@@ -3,7 +3,7 @@ package com.amadydev.alkemymoviechallenge.presentation.view
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.amadydev.alkemymoviechallenge.data.DB
+import com.amadydev.alkemymoviechallenge.di.DB
 import com.amadydev.alkemymoviechallenge.databinding.ActivityMovieDetailsBinding
 import com.squareup.picasso.Picasso
 

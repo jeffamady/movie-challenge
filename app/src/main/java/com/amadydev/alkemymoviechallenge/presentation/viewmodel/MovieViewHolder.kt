@@ -1,8 +1,7 @@
 package com.amadydev.alkemymoviechallenge.presentation.viewmodel
 
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.amadydev.alkemymoviechallenge.data.DB
+import com.amadydev.alkemymoviechallenge.di.DB
 import com.amadydev.alkemymoviechallenge.databinding.ItemMovieBinding
 import com.amadydev.alkemymoviechallenge.domain.entities.Movies
 import com.squareup.picasso.Picasso

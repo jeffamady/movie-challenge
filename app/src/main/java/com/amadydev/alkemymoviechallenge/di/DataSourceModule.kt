@@ -1,4 +1,4 @@
-package com.amadydev.alkemymoviechallenge.data
+package com.amadydev.alkemymoviechallenge.di
 
 import com.amadydev.alkemymoviechallenge.data.remote.datasource.IDataSource
 import dagger.Module

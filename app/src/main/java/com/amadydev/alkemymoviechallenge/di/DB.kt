@@ -1,4 +1,4 @@
-package com.amadydev.alkemymoviechallenge.data
+package com.amadydev.alkemymoviechallenge.di
 object DB {
     const val base_url = "https://api.themoviedb.org/3/"
     const val api_key = "9628b9a254c3c487541bb658f79c11b5"

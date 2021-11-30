@@ -1,6 +1,6 @@
 package com.amadydev.alkemymoviechallenge.data.remote.datasource
 
-import com.amadydev.alkemymoviechallenge.data.DB
+import com.amadydev.alkemymoviechallenge.di.DB
 import com.amadydev.alkemymoviechallenge.data.remote.dto.MoviesDTO
 import com.amadydev.alkemymoviechallenge.domain.ObjectResult
 import kotlinx.coroutines.Dispatchers
