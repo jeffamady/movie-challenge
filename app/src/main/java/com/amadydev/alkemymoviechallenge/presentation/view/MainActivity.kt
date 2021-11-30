@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener, SearchView.OnQue
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         hideKeyboard()
+        binding.mainProgress.isVisible = false
         return true
     }
 
