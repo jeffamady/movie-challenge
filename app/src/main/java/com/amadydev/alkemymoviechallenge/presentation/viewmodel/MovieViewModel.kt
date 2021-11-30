@@ -1,5 +1,7 @@
 package com.amadydev.alkemymoviechallenge.presentation.viewmodel
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,12 +27,19 @@ class MovieViewModel @Inject constructor(
     private val mOnError = MutableLiveData<String>()
     val onError: LiveData<String> = mOnError
 
-    fun getMovies() {
+    fun getMovies(context: Context) {
         viewModelScope.launch {
             when (val result = getPopularMoviesUseCase()) {
                 is ObjectResult.Success -> {
                     if (result.data.isNotEmpty()) {
                         this@MovieViewModel.mList.value = result.data
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "It seems we don't have this movie or something went wrong. Please try again!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
                     }
                 }
                 is ObjectResult.Failure -> this@MovieViewModel.mOnError.value =
@@ -39,17 +48,24 @@ class MovieViewModel @Inject constructor(
         }
     }
 
-    fun getMovieByName(query: String) {
+    fun getMovieByName(query: String, context: Context) {
         viewModelScope.launch {
             when (val result = getMovieByNameUseCase(query)) {
                 is ObjectResult.Success -> {
                     if (result.data.isNotEmpty()) {
                         this@MovieViewModel.mList.value = result.data
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "It seems we don't have this movie or something went wrong. Please try again!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
                 is ObjectResult.Failure -> this@MovieViewModel.mOnError.value =
                     result.exception.message
             }
         }
+
     }
 }

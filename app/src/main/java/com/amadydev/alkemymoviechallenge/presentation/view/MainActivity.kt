@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener, SearchView.OnQue
     }
 
     private fun callViewModelMethods() {
-        viewModel.getMovies().also(::println)
+        viewModel.getMovies(this)
     }
 
     private fun onClickEvents() {
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener, SearchView.OnQue
         if (query.isNullOrEmpty()) Toast.makeText(this, "Can not be empty", Toast.LENGTH_SHORT)
             .show()
         if (!query.isNullOrEmpty()) {
-            with(viewModel) { getMovieByName(query.toString().lowercase()) }
+            with(viewModel) { getMovieByName(query.toString().lowercase(),this@MainActivity) }
         }
         return true
     }
