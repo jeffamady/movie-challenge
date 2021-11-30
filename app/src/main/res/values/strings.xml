@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AlkemyMovieChallenge</string>
     <string name="movie">a movie</string>
+    <string name="btn_close">close</string>
+    <string name="movie_overview">overview</string>
+    <string name="textview">text view</string>
 </resources>

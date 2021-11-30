@@ -1,9 +1,10 @@
 package com.amadydev.alkemymoviechallenge.domain.usecases
 
+import com.amadydev.alkemymoviechallenge.data.remote.repository.Repository
 import com.amadydev.alkemymoviechallenge.domain.ObjectResult
 import com.amadydev.alkemymoviechallenge.domain.entities.Movies
-import com.amadydev.alkemymoviechallenge.domain.repository.ILocalRepository
+import javax.inject.Inject
 
-class GetMovieByNameUseCase(private val repository: ILocalRepository) {
-    suspend operator fun invoke(query: String): ObjectResult<List<Movies>?> = repository.getMovie(query)
+class GetMovieByNameUseCase @Inject constructor(private val repository: Repository) {
+    suspend operator fun invoke(query: String): ObjectResult<List<Movies>> = repository.getMovieByName(query)
 }

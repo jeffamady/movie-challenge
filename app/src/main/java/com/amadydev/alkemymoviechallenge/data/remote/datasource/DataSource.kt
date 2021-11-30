@@ -8,22 +8,23 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DataSource @Inject constructor(private val dataSource: IDataSource) {
-    suspend fun getPopularMovies(): ObjectResult<MoviesDTO?> {
+    suspend fun getPopularMovies(): ObjectResult<MoviesDTO> {
         return try {
             withContext(Dispatchers.IO){
                 val result = dataSource.fetchPopularMovies(DB.api_key)
-                ObjectResult.Success(result.body())
+                result.body().also(::println)
+                ObjectResult.Success(result.body()!!)
             }
         } catch (ex: Exception){
             ObjectResult.Failure(ex)
         }
     }
 
-    suspend fun getMovieByName(query: String): ObjectResult<MoviesDTO?> {
+    suspend fun getMovieByName(query: String): ObjectResult<MoviesDTO> {
         return try {
             withContext(Dispatchers.IO){
                 val result = dataSource.fetchMovieByName(DB.api_key,query)
-                ObjectResult.Success(result.body())
+                ObjectResult.Success(result.body()!!)
             }
         } catch (ex: Exception) {
             ObjectResult.Failure(ex)

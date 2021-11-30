@@ -14,7 +14,7 @@ import javax.inject.Singleton
 object DataSourceModule {
     @Singleton
     @Provides
-    fun profideRetrofit(): Retrofit{
+    fun provideRetrofit(): Retrofit{
         return Retrofit.Builder()
             .baseUrl(DB.base_url)
             .addConverterFactory(GsonConverterFactory.create())
@@ -22,7 +22,7 @@ object DataSourceModule {
     }
     @Singleton
     @Provides
-    fun profideIDataSouce(retrofit: Retrofit): IDataSource {
+    fun provideIDataSource(retrofit: Retrofit): IDataSource {
         return retrofit.create(IDataSource::class.java)
     }
 }
