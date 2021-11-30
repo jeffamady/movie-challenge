@@ -3,9 +3,11 @@ package com.amadydev.alkemymoviechallenge.presentation.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.amadydev.alkemymoviechallenge.databinding.ActivityMainBinding
 import com.amadydev.alkemymoviechallenge.presentation.viewmodel.MovieAdapter
@@ -18,12 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity(), OnMovieClickListener, SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding
 
-//    private val viewModel by viewModels<MovieViewModel> {
-//        ViewModelFactory(GetPopularMoviesUseCase(Repository(DataSource(DataSourceModule.profideIDataSouce(
-//            DataSourceModule.profideRetrofit())))),
-//            GetMovieByNameUseCase(Repository(DataSource(DataSourceModule.profideIDataSouce(
-//                DataSourceModule.profideRetrofit())))))
-//    }
+
     private val viewModel: MovieViewModel by viewModels()
 
     private val movieAdapter: MovieAdapter by lazy { MovieAdapter(this) }
@@ -59,7 +56,13 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener, SearchView.OnQue
         })
 
         viewModel.onError.observe(this, {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            val errorText =
+                if (!it.isNullOrEmpty()) it else "It seems we don't have this movie or something went wrong. Please try again!"
+            Toast.makeText(this, errorText, Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel.isLoading.observe(this, {
+            binding.mainProgress.isVisible = it
         })
     }
 
@@ -79,14 +82,20 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener, SearchView.OnQue
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        if (query.isNullOrEmpty()) Toast.makeText(this, "Can not be empty", Toast.LENGTH_SHORT)
-            .show()
-        if (!query.isNullOrEmpty()) {
-            with(viewModel) { getMovieByName(query.toString().lowercase(),this@MainActivity) }
-        }
+        hideKeyboard()
         return true
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean = true
+    private fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.viewRoot.windowToken, 0)
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if (!newText.isNullOrEmpty()) {
+            with(viewModel) { getMovieByName(newText, this@MainActivity) }
+        }
+        return true
+    }
 
 }

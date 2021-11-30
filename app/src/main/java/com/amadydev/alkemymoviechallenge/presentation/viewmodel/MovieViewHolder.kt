@@ -1,5 +1,6 @@
 package com.amadydev.alkemymoviechallenge.presentation.viewmodel
 
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.amadydev.alkemymoviechallenge.data.DB
 import com.amadydev.alkemymoviechallenge.databinding.ItemMovieBinding

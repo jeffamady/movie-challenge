@@ -27,12 +27,18 @@ class MovieViewModel @Inject constructor(
     private val mOnError = MutableLiveData<String>()
     val onError: LiveData<String> = mOnError
 
+    private val mIsLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = mIsLoading
+
+
     fun getMovies(context: Context) {
         viewModelScope.launch {
+            mIsLoading.postValue(true)
             when (val result = getPopularMoviesUseCase()) {
                 is ObjectResult.Success -> {
                     if (result.data.isNotEmpty()) {
                         this@MovieViewModel.mList.value = result.data
+                        mIsLoading.postValue(false)
                     } else {
                         Toast.makeText(
                             context,
@@ -50,10 +56,12 @@ class MovieViewModel @Inject constructor(
 
     fun getMovieByName(query: String, context: Context) {
         viewModelScope.launch {
+            mIsLoading.postValue(true)
             when (val result = getMovieByNameUseCase(query)) {
                 is ObjectResult.Success -> {
                     if (result.data.isNotEmpty()) {
                         this@MovieViewModel.mList.value = result.data
+                        mIsLoading.postValue(false)
                     } else {
                         Toast.makeText(
                             context,

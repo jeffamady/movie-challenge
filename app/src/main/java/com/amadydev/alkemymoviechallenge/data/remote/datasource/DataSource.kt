@@ -12,7 +12,6 @@ class DataSource @Inject constructor(private val dataSource: IDataSource) {
         return try {
             withContext(Dispatchers.IO){
                 val result = dataSource.fetchPopularMovies(DB.api_key)
-                result.body().also(::println)
                 ObjectResult.Success(result.body()!!)
             }
         } catch (ex: Exception){

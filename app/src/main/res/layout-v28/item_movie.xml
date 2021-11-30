@@ -38,7 +38,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="I do i do" />
+            tools:text="I do I did" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
