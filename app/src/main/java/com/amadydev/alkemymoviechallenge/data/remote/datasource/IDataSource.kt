@@ -7,8 +7,8 @@ import retrofit2.http.Query
 
 interface IDataSource {
     @GET("movie/popular?")
-    suspend fun fetchPopularMovies(@Query("api_key") api_key: String): Response<MoviesDTO>
+    suspend fun fetchPopularMovies(@Query("api_key") api_key: String,  @Query("page") page: Int): Response<MoviesDTO>
 
     @GET("search/movie?")
-    suspend fun fetchMovieByName(@Query("api_key") api_key: String, @Query("query") query: String): Response<MoviesDTO>
+    suspend fun fetchMovieByName(@Query("api_key") api_key: String, @Query("query") query: String, @Query("page") page: Int): Response<MoviesDTO>
 }

@@ -5,11 +5,24 @@
       <map>
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/AlkemyMovieChallenge/app/src/main/res/layout/activity_main.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/AlkemyMovieChallenge/app/src/main/res/layout/item_movie.xml" value="0.21510416666666668" />
-        <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.75" />
+        <entry key="app/src/main/res/drawable/circle_shape.xml" value="0.18783783783783783" />
+        <entry key="app/src/main/res/drawable/gradient.xml" value="0.2171875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_movie_24.xml" value="0.18783783783783783" />
+        <entry key="app/src/main/res/drawable/ic_error.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.30579531442663377" />
+        <entry key="app/src/main/res/layout-v28/fragment_movie_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout-v28/item_movie.xml" value="0.3637660485021398" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/layout/activity_movie_details.xml" value="0.20104166666666667" />
-        <entry key="app/src/main/res/layout/item_movie.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/blank_fragment.xml" value="0.1608108108108108" />
+        <entry key="app/src/main/res/layout/fragement_movie_details.xml" value="0.17387387387387387" />
+        <entry key="app/src/main/res/layout/fragment_movie.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_movie_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_movie.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/menu_movie.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/movie_load_state_footer.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/movie_menu.xml" value="0.17387387387387387" />
       </map>
     </option>
   </component>

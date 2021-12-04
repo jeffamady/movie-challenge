@@ -16,7 +16,7 @@ object DataSourceModule {
     @Provides
     fun provideRetrofit(): Retrofit{
         return Retrofit.Builder()
-            .baseUrl(DB.base_url)
+            .baseUrl(TMDB.base_url)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
