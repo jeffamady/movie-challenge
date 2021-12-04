@@ -2,53 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/viewRoot"
-    android:background="#15222E"
-
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.MainActivity">
 
-    <ImageView
-        android:id="@+id/ivHeader"
-        android:background="#FF5722"
-        android:contentDescription="@string/app_name"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:src="@drawable/za"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="#15222E"
+    tools:context=".ui.MainActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/svMovies"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:elevation="5dp"
-        app:layout_constraintBottom_toBottomOf="@id/ivHeader"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMovies"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHeader"
-        app:layout_constraintVertical_bias="0.0"/>
 
-    <ProgressBar
-        android:id="@+id/mainProgress"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navHostFragmentMain"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
