@@ -30,8 +30,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
 
         _binding = FragmentMovieBinding.bind(view)
 
-        val adapter = MovieAdapter(this)
-        callViewModelMethods()
+        val adapter = MovieAdapter(this, this)
 
         binding.apply {
             rvMovies.setHasFixedSize(true)
@@ -80,10 +79,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
         setHasOptionsMenu(true)
     }
 
-    private fun callViewModelMethods() {
-//        viewModel.getMovies()
-//        viewModel.searchMovie("ai")
-    }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

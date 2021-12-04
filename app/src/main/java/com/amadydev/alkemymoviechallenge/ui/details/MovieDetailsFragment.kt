@@ -29,8 +29,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
         with(binding) {
             val movie = args.movie
-//                .error(R.drawable.ic_error)
-//                .into(ivPoster)
+
             Glide.with(this@MovieDetailsFragment)
                 .load(TMDB.base_img_url + movie.backdropPath)
                 .error(R.drawable.ic_error)
@@ -83,8 +82,8 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
             tvOverview.text = movie.overview
             tvPopularity.text = movie.popularity.toString()
             tvAverage.text = "${movie.voteAverage}/10"
-            ivBackdrop.contentDescription = "${movie.title}-$id"
-            ivPoster.contentDescription = "${movie.title}-$id"
+            ivBackdrop.contentDescription = movie.title
+            ivPoster.contentDescription = movie.title
             val uri = Uri.parse("https://github.com/jeffamady/alkemy-movie-challenge")
             val intent = Intent(Intent.ACTION_VIEW, uri)
 

@@ -1,32 +1,52 @@
 package com.amadydev.alkemymoviechallenge.data.remote.datasource
 
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.amadydev.alkemymoviechallenge.data.TMDB
-import com.amadydev.alkemymoviechallenge.data.remote.dto.MoviesDTO
-import com.amadydev.alkemymoviechallenge.domain.ObjectResult
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
+import com.amadydev.alkemymoviechallenge.domain.entities.Movie
+import retrofit2.HttpException
+import java.io.IOException
 
-class DataSource @Inject constructor(private val dataSource: IDataSource) {
-    suspend fun getPopularMovies(page: Int): ObjectResult<MoviesDTO> {
-        return try {
-            withContext(Dispatchers.IO){
-                val result = dataSource.fetchPopularMovies(TMDB.api_key, page)
-                ObjectResult.Success(result.body()!!)
-            }
-        } catch (ex: Exception){
-            ObjectResult.Failure(ex)
+
+class DataSource(
+    private val api: IDataSource,
+    private val query: String
+
+) : PagingSource<Int, Movie>() {
+
+
+    constructor(api: IDataSource) : this(api, query = "")
+
+
+    override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
+        return state.anchorPosition?.let {
+            val anchorPage = state.closestPageToPosition(it)
+            anchorPage?.prevKey?.plus(1)?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    suspend fun getMovieByName(query: String, page: Int): ObjectResult<MoviesDTO> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
+        val page = params.key ?: TMDB.starting_page_index
+        
+
         return try {
-            withContext(Dispatchers.IO){
-                val result = dataSource.fetchMovieByName(TMDB.api_key,query, page)
-                ObjectResult.Success(result.body()!!)
+
+            val response = if (query.isNotEmpty() && query != ""){
+                api.fetchMovieByName(TMDB.api_key, query, page)
+            } else {
+                api.fetchPopularMovies(TMDB.api_key,page)
             }
-        } catch (ex: Exception) {
-            ObjectResult.Failure(ex)
+            val movies = response.body()?.movies!!
+//            response.body()?.page.also(::println)
+            LoadResult.Page(
+                data = movies,
+                prevKey = if (page == TMDB.starting_page_index) null else page - 1,
+                nextKey = if (response.body()?.movies?.isEmpty()!!) null else page + 1
+            )
+        } catch (ex: IOException) {
+            LoadResult.Error(ex)
+        } catch (ex: HttpException) {
+            LoadResult.Error(ex)
         }
     }
 

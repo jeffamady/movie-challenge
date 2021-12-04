@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.amadydev.alkemymoviechallenge.data.remote.datasource.IDataSource
-import com.amadydev.alkemymoviechallenge.data.remote.datasource.MoviePagingSource
+import com.amadydev.alkemymoviechallenge.data.remote.datasource.DataSource
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -21,7 +21,7 @@ class Repository @Inject constructor(
                 maxSize = 100,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { MoviePagingSource(api, query) }
+            pagingSourceFactory = { DataSource(api, query) }
         ).liveData
 
 
@@ -42,7 +42,7 @@ class Repository @Inject constructor(
                 maxSize = 100,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { MoviePagingSource(api) }
+            pagingSourceFactory = { DataSource(api) }
         ).liveData
 
 

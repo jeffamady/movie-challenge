@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
+    android:layout_height="wrap_content"
     android:layout_margin="6dp"
     app:cardCornerRadius="15dp"
     app:cardElevation="10dp">
@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/ivMovie"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="260dp"
             android:contentDescription="@string/movie"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/tvName"
@@ -37,23 +37,37 @@
 
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:fontFamily="sans-serif-black"
-            android:gravity="center"
-            android:maxLines="1"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
             android:textAlignment="center"
             android:textColor="#ECEBEB"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            tools:text="I do i do" />
+            tools:text="Coding is my thing" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_shape"
+            android:elevation="5dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivMovie" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
