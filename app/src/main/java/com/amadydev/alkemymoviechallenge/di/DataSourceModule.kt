@@ -1,6 +1,6 @@
 package com.amadydev.alkemymoviechallenge.di
 
-import com.amadydev.alkemymoviechallenge.data.TMDB
+import com.amadydev.alkemymoviechallenge.data.TMDb
 import com.amadydev.alkemymoviechallenge.data.remote.datasource.IDataSource
 import dagger.Module
 import dagger.Provides
@@ -17,7 +17,7 @@ object DataSourceModule {
     @Provides
     fun provideRetrofit(): Retrofit{
         return Retrofit.Builder()
-            .baseUrl(TMDB.base_url)
+            .baseUrl(TMDb.base_url)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

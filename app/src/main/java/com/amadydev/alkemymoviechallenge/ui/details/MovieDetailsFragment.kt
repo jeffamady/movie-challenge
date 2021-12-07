@@ -10,7 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.amadydev.alkemymoviechallenge.R
-import com.amadydev.alkemymoviechallenge.data.TMDB
+import com.amadydev.alkemymoviechallenge.data.TMDb
 import com.amadydev.alkemymoviechallenge.databinding.FragmentMovieDetailsBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -31,7 +31,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
             val movie = args.movie
 
             Glide.with(this@MovieDetailsFragment)
-                .load(TMDB.base_img_url + movie.backdropPath)
+                .load(TMDb.base_img_url + movie.backdropPath)
                 .error(R.drawable.ic_error)
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
@@ -41,7 +41,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
                         isFirstResource: Boolean,
                     ): Boolean {
                         Glide.with(this@MovieDetailsFragment)
-                            .load(TMDB.base_img_url + movie.posterPath)
+                            .load(TMDb.base_img_url + movie.posterPath)
                             .error(R.drawable.ic_error)
                             .into(ivPoster)
                         progressBar.isVisible = false
@@ -62,7 +62,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
                         isFirstResource: Boolean,
                     ): Boolean {
                         Glide.with(this@MovieDetailsFragment)
-                            .load(TMDB.base_img_url + movie.posterPath)
+                            .load(TMDb.base_img_url + movie.posterPath)
                             .error(R.drawable.ic_error)
                             .into(ivPoster)
                         progressBar.isVisible = false

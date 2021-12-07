@@ -8,7 +8,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.amadydev.alkemymoviechallenge.R
-import com.amadydev.alkemymoviechallenge.data.TMDB
+import com.amadydev.alkemymoviechallenge.data.TMDb
 import com.amadydev.alkemymoviechallenge.databinding.ItemMovieBinding
 import com.amadydev.alkemymoviechallenge.domain.entities.Movie
 import com.bumptech.glide.Glide
@@ -53,7 +53,7 @@ class MovieAdapter(private val onMovieClickListener: OnMovieClickListener, priva
         fun bing(movie: Movie) {
             with(binding) {
                 Glide.with(fragment)
-                    .load(TMDB.base_img_url + movie.posterPath)
+                    .load(TMDb.base_img_url + movie.posterPath)
                     .error(R.drawable.ic_error)
                     .listener(object : RequestListener<Drawable>{
                         override fun onLoadFailed(
