@@ -6,9 +6,10 @@ import com.amadydev.alkemymoviechallenge.data.TMDB
 import com.amadydev.alkemymoviechallenge.domain.entities.Movie
 import retrofit2.HttpException
 import java.io.IOException
+import javax.inject.Inject
 
 
-class DataSource(
+class DataSource @Inject constructor(
     private val api: IDataSource,
     private val query: String
 
@@ -21,20 +22,20 @@ class DataSource(
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition?.let {
             val anchorPage = state.closestPageToPosition(it)
-            anchorPage?.prevKey?.plus(1)?: anchorPage?.nextKey?.minus(1)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         val page = params.key ?: TMDB.starting_page_index
-        
+
 
         return try {
 
-            val response = if (query.isNotEmpty() && query != ""){
+            val response = if (query.isNotEmpty() && query != "") {
                 api.fetchMovieByName(TMDB.api_key, query, page)
             } else {
-                api.fetchPopularMovies(TMDB.api_key,page)
+                api.fetchPopularMovies(TMDB.api_key, page)
             }
             val movies = response.body()?.movies!!
 //            response.body()?.page.also(::println)
