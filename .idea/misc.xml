@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_people_alt_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_error.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/drawable/splash_background.xml" value="0.21384615384615385" />
         <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.30579531442663377" />
         <entry key="app/src/main/res/layout-v28/fragment_movie_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout-v28/item_movie.xml" value="0.3637660485021398" />
