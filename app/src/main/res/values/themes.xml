@@ -18,6 +18,8 @@
         <item name="colorPrimary">@color/color_a</item>
         <item name="colorPrimaryVariant">@color/color_b</item>
         <item name="colorOnPrimary">@color/color_c</item>
+
+        <item name="colorSecondary">@color/color_b</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/color_a</item>
     </style>
