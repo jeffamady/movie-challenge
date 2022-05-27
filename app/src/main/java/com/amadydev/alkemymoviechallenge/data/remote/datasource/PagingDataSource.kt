@@ -9,7 +9,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 
-class DataSource @Inject constructor(
+class PagingDataSource @Inject constructor(
     private val api: IDataSource,
     private val query: String
 

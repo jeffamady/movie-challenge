@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.amadydev.alkemymoviechallenge.AlkemyMovieChallengeApp.Companion.prefs
 import com.amadydev.alkemymoviechallenge.R
 import com.amadydev.alkemymoviechallenge.databinding.FragmentMovieBinding
 import com.amadydev.alkemymoviechallenge.domain.entities.Movie
@@ -31,6 +32,10 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
         _binding = FragmentMovieBinding.bind(view)
 
         val adapter = MovieAdapter(this, this)
+
+        prefs.getGuestSessionId().also{
+            println("From fragment userId: $it")
+        }
 
         binding.apply {
             rvMovies.setHasFixedSize(true)

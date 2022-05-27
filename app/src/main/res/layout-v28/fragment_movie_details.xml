@@ -139,7 +139,7 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/color_a"
+        android:background="@drawable/circle_shape"
         android:elevation="5dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -190,6 +190,48 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/rate_this_movie"
+        android:textColor="@color/color_c"
+        app:layout_constraintEnd_toEndOf="@+id/svOverview"
+        app:layout_constraintStart_toStartOf="@+id/svOverview"
+        app:layout_constraintTop_toBottomOf="@+id/tvLanguage" />
+
+    <EditText
+        android:id="@+id/etRateValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:maxLines="1"
+        android:hint="1..10"
+        android:ellipsize="end"
+        android:textSize="11sp"
+        android:textColor="@color/color_c"
+        android:gravity="center_horizontal"
+        tools:text="7"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnRate"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:textColor="@color/color_c"
+        android:layout_marginTop="4dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:background="@drawable/ic_baseline_favorite_24"
+        app:layout_constraintEnd_toEndOf="@+id/etRateValue"
+        app:layout_constraintStart_toStartOf="@+id/etRateValue"
+        app:layout_constraintTop_toBottomOf="@+id/etRateValue"
+        android:contentDescription="@string/rate_this_movie" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
