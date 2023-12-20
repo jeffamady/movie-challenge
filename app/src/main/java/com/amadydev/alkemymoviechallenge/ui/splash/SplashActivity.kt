@@ -14,9 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
-class SplashActivity() : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
-//    private val splashViewModel: SplashViewModel by viewModels()
     private val splashViewModel by viewModels<SplashViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
